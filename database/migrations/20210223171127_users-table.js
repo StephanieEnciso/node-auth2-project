@@ -9,12 +9,13 @@ exports.up = function(knex) {
         tbl.increments();
         tbl.string('username', 128).notNullable().unique().index();
         tbl.string('password', 256).notNullable();
+        tbl.string('department')
         tbl.integer('role')
-            .unsigned()
-            .refernces('roles.id')
-            .onDelete('RESTRICT')
-            .onUpdate('CAASCADE')
-            .defaultTo(2);
+         .unsigned()
+         .references('roles.id')
+         .onDelete('RESTRICT')
+         .onUpdate('CASCADE')
+         .defaultTo(2);
     });
 };
 
